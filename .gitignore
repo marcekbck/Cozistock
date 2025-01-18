@@ -1,1 +1,38 @@
+# Ignorar arquivos temporários do sistema operacional
+.DS_Store
+Thumbs.db
+*.bak
+
+# Arquivos Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambiente virtual
 venv/
+.env/
+.venv/
+
+# Arquivos de log
+*.log
+
+# Diretórios de build
+build/
+dist/
+
+# Arquivos da IDE (PyCharm, VSCode)
+.idea/
+.vscode/
+
+# Arquivos de configuração do Git
+.gitconfig
+.git-credentials
+
+# Arquivos de compilação de C
+*.o
+*.a
+*.so
+*.exe
+
+# Arquivos temporários de editores de texto
+*~
