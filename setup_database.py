@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS products (
     quantity INTEGER NOT NULL,
     price REAL NOT NULL,
     expire_date TEXT NOT NULL
+    image_path TEXT NOT NULL
 )
 """)
 
