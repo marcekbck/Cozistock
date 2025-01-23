@@ -5,7 +5,7 @@ import sqlite3
 from ObjProduct import Product
 from datetime import datetime
 from PIL import Image, ImageTk
-
+from export import export_data_to_txt
 
 
 conn = sqlite3.connect("products.db")  # Conecta ao banco de dados (ou cria se não existir)
@@ -221,7 +221,7 @@ new_button.pack(side=tk.LEFT, padx=5)
 import_button = ttk.Button(header_frame, text="Importar", style="TButton", command=...) #Botão para adicionar um produto
 import_button.pack(side=tk.LEFT, padx=5)
 
-export_button = ttk.Button(header_frame, text="Exportar", style="TButton", command=...) #Botão para adicionar um produto
+export_button = ttk.Button(header_frame, text="Exportar", style="TButton", command=export_data_to_txt)  # Botão para exportar
 export_button.pack(side=tk.LEFT, padx=5)
 
 #CHAMA A FUNÇÃO PARA EXIBIR A LISTA DE PRODUTOS

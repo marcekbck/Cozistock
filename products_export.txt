@@ -1,0 +1,8 @@
+Product List
+=====================
+ID: 1, Name: Batatas, Quantity: 25, Price: 0.15€, Expiry Date: 01-01-2026, Image Path: products_img.jpg
+ID: 2, Name: Alface, Quantity: 1, Price: 0.90€, Expiry Date: 25-01-2025, Image Path: products_img.jpg
+ID: 3, Name: Chocolate, Quantity: 3, Price: 1.10€, Expiry Date: 01-12-2025, Image Path: products_img.jpg
+ID: 4, Name: Azeite, Quantity: 1, Price: 99.00€, Expiry Date: 01-01-2027, Image Path: products_img.jpg
+ID: 5, Name: Pão, Quantity: 6, Price: 0.12€, Expiry Date: 25-01-2024, Image Path: products_img.jpg
+ID: 8, Name: Queijo, Quantity: 3, Price: 4.99€, Expiry Date: 01-02-2025, Image Path: None
