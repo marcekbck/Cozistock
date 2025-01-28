@@ -1,0 +1,20 @@
+Interface
+	- Embelezar ; Organizar
+	- Criar interface para importar
+	- Criar interface para exportar
+	
+Products Database
+	- Recolher e filtrar informações da importação dos sites compras
+	- Recolher, filtrar e enviar informações na exportação para os sites compras
+	- Tratar informação introduzida pelo user
+	- Criar e associar um repositório universal das imagens dos produtos
+	
+	
+User Database
+	- Criar base dados para users
+	- Criar registos e logins seguros
+	- Assegurar segurança de informações do user
+	
+Back-end
+	- Tratar probabilidades de erro
+	

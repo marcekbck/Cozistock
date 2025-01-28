@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css"> 
+</head>
+<body class="inventory-page">
+  <header class="d-flex justify-content-between align-items-center p-3 bg-primary">
+    <h1 class="text-white m-0">Lista de Produtos</h1>
+    <div class="d-flex justify-content-center flex-grow-1">
+      <!-- Contêiner para centralizar os botões -->
+      <button class="btn btn-light me-2" onclick="window.location.href='home';">Voltar</button>
+      <button class="btn btn-light me-2" onclick="window.location.href='add_product';">Adicionar produto</button>
+    </div>
+    <div class="sort-dropdown">
+      <label for="sort-options" class="dropdown-label">Ordenar por:</label>
+    <select id="sort-by" onchange="window.location.href='?sort_by=' + this.value;">
+        <option value="name" {% if request.args.get('sort_by') == 'name' %}selected{% endif %}>Nome</option>
+        <option value="quantity" {% if request.args.get('sort_by') == 'quantity' %}selected{% endif %}>Quantidade</option>
+        <option value="price" {% if request.args.get('sort_by') == 'price' %}selected{% endif %}>Preço</option>
+        <option value="expire_date" {% if request.args.get('sort_by') == 'expire_date' %}selected{% endif %}>Data de Validade</option>
+    </select>
+    </div>
+  </header>
+    <div class="container">
+        <!-- Iterar sobre os produtos com Jinja2 -->
+        {% for produto in data %}
+        <div class="produto">
+            <!-- Imagem do produto -->
+            <img src="{{ url_for('static', filename='images/' + produto['image_path']) }}" alt="Imagem de {{ produto['name'] }}" class="produto-imagem">
+            
+            <!-- Nome do produto -->
+            <h2 class="produto-nome">{{ produto['name'] }}</h2>
+            
+            <!-- Preço -->
+            <p class="produto-preco">€{{ "%.2f"|format(produto['price']) }}</p>
+            
+            <!-- Quantidade -->
+            <p class="produto-quantidade">Quantidade: {{ produto['quantity'] }}</p>
+            
+            <!-- Data de validade -->
+            <p class="produto-validade">Validade: {{ produto['expire_date'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

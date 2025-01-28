@@ -1,20 +1,11 @@
-Interface
-	- Embelezar ; Organizar
-	- Criar interface para importar
-	- Criar interface para exportar
-	
-Products Database
-	- Recolher e filtrar informações da importação dos sites compras
-	- Recolher, filtrar e enviar informações na exportação para os sites compras
-	- Tratar informação introduzida pelo user
-	- Criar e associar um repositório universal das imagens dos produtos
-	
-	
-User Database
-	- Criar base dados para users
-	- Criar registos e logins seguros
-	- Assegurar segurança de informações do user
-	
-Back-end
-	- Tratar probabilidades de erro
-	
+- Adicionar feature editar
+- Adicionar feature remover
+- Adicionar cores data validade
+- Adicionar feature importar
+- Adicionar feature exportar
+- Adicionar feature register/login
+- Corrigir user inputs
+- Adicionar apresentação inicial
+- Limpeza código
+- Induzir erros e Corrigir
+
