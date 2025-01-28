@@ -3,11 +3,6 @@ import sqlite3
 
 app = Flask(__name__) # inicia app
 
-# Conexão com o banco de dados
-
-
-
-
 @app.route('/home', methods=['GET'])
 def home():
     return render_template('index.html')
