@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivo de Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="archive-page">
+    <header class="d-flex justify-content-between align-items-center p-3 bg-primary">
+        <h1 class="text-white m-0">Arquivo de Produtos</h1>
+        <button class="btn btn-light" onclick="window.location.href='inventory';">Voltar</button>
+    </header>
+    <div class="container">
+        {% for product in archive %}
+        <div class="produto">
+            <img src="{{ url_for('static', filename='images/' + product['image_path']) }}" alt="{{ product['name'] }}" class="produto-imagem">
+            <h2 class="produto-nome">{{ product['name'] }}</h2>
+            <p class="produto-preco">€{{ "%.2f"|format(product['price']) }}</p>
+            <p class="produto-quantidade">Quantidade: {{ product['quantity'] }}</p>
+            <p class="produto-validade">Validade: {{ product['expire_date'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

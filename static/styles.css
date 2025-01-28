@@ -228,3 +228,109 @@
     background-color: #007BFF;
     color: white;
 }
+
+                                                            /* Estilos para a página de archive*/
+                                                    
+/* General styles for the archive page */
+body.archive-page {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+  }
+  
+  header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 25px;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  header button {
+    background-color: #ffffff;
+    border: none;
+    color: #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  header button:hover {
+    background-color: #e0e0e0;
+  }
+
+  .container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .produto {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .produto-imagem {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .produto-nome {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  
+  .produto-preco {
+    color: #28a745;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .produto-quantidade,
+  .produto-validade {
+    font-size: 16px;
+    color: #6c757d;
+    margin-top: 5px;
+  }
+  
+  .produto-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+  }
+  
+  .produto-actions button {
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .produto-actions button:hover {
+    background-color: #0056b3;
+  }
+  
