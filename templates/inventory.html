@@ -1,51 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
-<head> 
+<html lang="pt">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Produtos</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/styles.css"> 
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body class="inventory-page">
   <header class="d-flex justify-content-between align-items-center p-3 bg-primary">
     <h1 class="text-white m-0">Lista de Produtos</h1>
     <div class="d-flex justify-content-center flex-grow-1">
-      <!-- Contêiner para centralizar os botões -->
+      <!-- Container for buttons -->
       <button class="btn btn-light me-2" onclick="window.location.href='home';">Voltar</button>
-      <button class="btn btn-light me-2" onclick="window.location.href='add_product';">Adicionar produto</button>
+      <!-- Trigger Add Product Modal -->
+      <button class="btn btn-light me-2" data-bs-toggle="modal" data-bs-target="#addProductModal">Adicionar produto</button>
+      <!-- Trigger Archive Page -->
+      <button class="btn btn-light" onclick="window.location.href='archive';">Arquivo</button>
     </div>
     <div class="sort-dropdown">
       <label for="sort-options" class="dropdown-label">Ordenar por:</label>
-    <select id="sort-by" onchange="window.location.href='?sort_by=' + this.value;">
+      <select id="sort-by" onchange="window.location.href='?sort_by=' + this.value;">
         <option value="name" {% if request.args.get('sort_by') == 'name' %}selected{% endif %}>Nome</option>
         <option value="quantity" {% if request.args.get('sort_by') == 'quantity' %}selected{% endif %}>Quantidade</option>
         <option value="price" {% if request.args.get('sort_by') == 'price' %}selected{% endif %}>Preço</option>
         <option value="expire_date" {% if request.args.get('sort_by') == 'expire_date' %}selected{% endif %}>Data de Validade</option>
-    </select>
+      </select>
     </div>
   </header>
-    <div class="container">
-        <!-- Iterar sobre os produtos com Jinja2 -->
-        {% for produto in data %}
+
+  <div class="container">
+      <!-- Product Cards will be here as usual -->
+      {% for produto in data %}
         <div class="produto">
-            <!-- Imagem do produto -->
             <img src="{{ url_for('static', filename='images/' + produto['image_path']) }}" alt="Imagem de {{ produto['name'] }}" class="produto-imagem">
-            
-            <!-- Nome do produto -->
             <h2 class="produto-nome">{{ produto['name'] }}</h2>
-            
-            <!-- Preço -->
             <p class="produto-preco">€{{ "%.2f"|format(produto['price']) }}</p>
-            
-            <!-- Quantidade -->
             <p class="produto-quantidade">Quantidade: {{ produto['quantity'] }}</p>
-            
-            <!-- Data de validade -->
-            <p class="produto-validade">Validade: {{ produto['expire_date'] }}</p>
+            <p class="{{ expire_date_calculator(produto['expire_date'])[1] }}">
+              {{ expire_date_calculator(produto['expire_date'])[0] }} dias restantes
+          </p>
+        
+            <!-- Edit and Remove actions -->
+            <div class="produto-actions">
+                <button 
+                  class="btn btn-primary btn-sm" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#editProductModal" 
+                  data-product-id="{{ produto['id'] }}" 
+                  data-name="{{ produto['name'] }}" 
+                  data-price="{{ produto['price'] }}" 
+                  data-quantity="{{ produto['quantity'] }}" 
+                  data-expire-date="{{ produto['expire_date'] }}">
+                  Editar
+                </button>
+                <form action="/remove_product/{{ produto['id'] }}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                </form>
+            </div>
         </div>
-        {% endfor %}
+      {% endfor %}
+  </div>
+
+  <!-- Add Product Modal -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Adicionar Novo Produto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/add_product" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome do Produto</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantidade</label>
+              <input type="number" class="form-control" id="quantity" name="quantity" required>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Preço</label>
+              <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+            </div>
+            <div class="mb-3">
+              <label for="expire_date" class="form-label">Data de Validade</label>
+              <input type="date" class="form-control" id="expire_date" name="expire_date" required>
+            </div>
+            <div class="mb-3">
+              <input type="hidden" class="form-control" id="image_path" name="image_path" value="products_img.jpg">
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProductModalLabel">Editar Produto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editProductForm" action="" method="POST">
+            <input type="hidden" id="product_id" name="product_id">
+            <div class="mb-3">
+              <label for="edit_name" class="form-label">Nome do Produto</label>
+              <input type="text" class="form-control" id="edit_name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_quantity" class="form-label">Quantidade</label>
+              <input type="number" class="form-control" id="edit_quantity" name="quantity" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_price" class="form-label">Preço</label>
+              <input type="number" class="form-control" id="edit_price" name="price" step="0.01" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit_expire_date" class="form-label">Data de Validade</label>
+              <input type="date" class="form-control" id="edit_expire_date" name="expire_date" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (Make sure to include Bootstrap JS for modals to work) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script to populate the Edit Product Modal dynamically -->
+  <script>
+    const editProductModal = document.getElementById('editProductModal');
+    editProductModal.addEventListener('show.bs.modal', function(event) {
+        const button = event.relatedTarget; // Button that triggered the modal
+        const productId = button.getAttribute('data-product-id');
+        const name = button.getAttribute('data-name');
+        const price = button.getAttribute('data-price');
+        const quantity = button.getAttribute('data-quantity');
+        const expireDate = button.getAttribute('data-expire-date');
+        
+        // Populate modal with product data
+        const modalForm = document.getElementById('editProductForm');
+        modalForm.action = `/edit_product/${productId}`;
+        document.getElementById('product_id').value = productId;
+        document.getElementById('edit_name').value = name;
+        document.getElementById('edit_price').value = price;
+        document.getElementById('edit_quantity').value = quantity;
+        document.getElementById('edit_expire_date').value = expireDate;
+    });
+  </script>
 </body>
 </html>
