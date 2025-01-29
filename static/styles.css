@@ -1,230 +1,249 @@
-                                                                /* Estilos para a página inicial */
+/* Estilos para a página inicial */
 
 .index-page header {
-    display: flex; /* Usando Flexbox para disposição */
-    justify-content: space-between; /* Espaço entre o título e os botões */
-    align-items: center; /* Alinhamento vertical dos itens */
-    padding: 1rem; /* Um pouco de espaçamento dentro do cabeçalho */
-    background-color: #007bff; /* Cor de fundo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra do cabeçalho */
+display: flex; /* Usando Flexbox para disposição */
+justify-content: space-between; /* Espaço entre o título e os botões */
+align-items: center; /* Alinhamento vertical dos itens */
+padding: 1rem; /* Um pouco de espaçamento dentro do cabeçalho */
+background-color: #007bff; /* Cor de fundo */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra do cabeçalho */
 }
 
 .index-page h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white; /* Cor do título */
-    margin-right: auto; /* Garante que o título fique à esquerda */
+font-size: 1.5rem;
+font-weight: bold;
+color: white; /* Cor do título */
+margin-right: auto; /* Garante que o título fique à esquerda */
 }
 
 .index-page button {
-    font-size: 1rem;
-    font-weight: 500;
+font-size: 1rem;
+font-weight: 500;
 }
 
 .index-page .d-flex.justify-content-center {
-    flex-grow: 1; /* Permite que os botões centrais cresçam e ocupem o espaço disponível */
-    justify-content: center; /* Centraliza os botões dentro deste contêiner */
+flex-grow: 1; /* Permite que os botões centrais cresçam e ocupem o espaço disponível */
+justify-content: center; /* Centraliza os botões dentro deste contêiner */
 }
 
 .index-page button.btn-danger {
-    margin-left: auto; /* Mantém o botão à extrema direita */
+margin-left: auto; /* Mantém o botão à extrema direita */
 }
 
 
-                                                            /* Estilos para a página de inventário */
+                                                        /* Estilos para a página de inventário */
 
 .inventory-page body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
+font-family: Arial, sans-serif;
+background-color: #f9f9f9;
+}
 
-  .inventory-page .container {
-    margin: 1% auto; /* Centraliza o container horizontalmente */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center; /* Centraliza os produtos */
-    padding: 10px; /* Adiciona espaçamento interno ao container */
-    width: 100%;
-    max-width: none; /* Remove limites */
-    }
+.inventory-page .container {
+margin: 1% auto; /* Centraliza o container horizontalmente */
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+justify-content: center; /* Centraliza os produtos */
+padding: 10px; /* Adiciona espaçamento interno ao container */
+width: 100%;
+max-width: none; /* Remove limites */
+}
+
+.inventory-page .btn-outline-custom {
+  background-color: transparent;
+  border: 1px solid #6c757d; /* Cor da borda (cinza claro, como o btn-secondary) */
+  color: #212529; /* Cor do texto (preto) */
+  padding: 0.2rem 0.5rem; /* Padding padrão de botões */
+  font-size: 0.8em;
+  border-radius: 0.25rem; /* Bordas arredondadas, como o Bootstrap */
+  text-align: center;
+  display: inline-block;
+  margin-left: 0;
+}
+
+.inventory-page .btn-outline-custom:hover {
+  background-color: #f8f9fa; /* Cor do fundo ao passar o mouse (cinza claro) */
+  border-color: #5a6268; /* Cor da borda quando hover */
+  color: #212529; /* Cor do texto ao passar o mouse */
+}
 
 .inventory-page  .produto {
-    width: 100%; /* Defina a largura do widget */
-    max-width: 180px;
-    height: auto; /* Deixe a altura ajustar-se automaticamente */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+width: 100%; /* Defina a largura do widget */
+max-width: 180px;
+height: auto; /* Deixe a altura ajustar-se automaticamente */
+border: 1px solid #ddd;
+border-radius: 8px;
+background: #fff;
+padding: 15px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+text-align: center;
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
 
 .inventory-page .produto:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
+transform: scale(1.05);
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
 .inventory-page  .produto img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1px;
-  }
+max-width: 100%;
+height: auto;
+object-fit: cover;
+border-radius: 8px;
+margin-bottom: 1px;
+}
 
 .inventory-page  .produto p {
-    margin: 5px 0;
-    font-size: 0.9em;
-    color: #555;
-  }
+margin: 5px 0;
+font-size: 0.9em;
+color: #555;
+}
 
 .inventory-page  .produto .preco {
-    font-size: 1.1em;
-    color: #27ae60;
-    font-weight: bold;
-  }
+font-size: 1.1em;
+color: #27ae60;
+font-weight: bold;
+}
 
 .inventory-page  .produto .quantidade {
-    font-size: 0.9em;
-    color: #ff6347;
-  }
+font-size: 0.9em;
+color: #ff6347;
+}
 
 .inventory-page  .produto .validade {
-    font-size: 0.85em;
-    color: #888;
-  }
+font-size: 0.85em;
+}
+
+.text-danger {
+color: red;  /* Vermelho para expiração imediata */
+}
+
+.text-warning {
+color: orange;  /* Amarelo para expiração em até 3 dias */
+}
+
+.text-success {
+color: green;  /* Verde para mais de 7 dias restantes */
+}
+
 
 .inventory-page header {
-    display: flex; /* Usando Flexbox para disposição */
-    justify-content: space-between; /* Espaço entre o título e os botões */
-    align-items: center; /* Alinhamento vertical dos itens */
-    padding: 1rem; /* Um pouco de espaçamento dentro do cabeçalho */
-    background-color: #007bff; /* Cor de fundo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra do cabeçalho */
+display: flex; /* Usando Flexbox para disposição */
+justify-content: space-between; /* Espaço entre o título e os botões */
+align-items: center; /* Alinhamento vertical dos itens */
+padding: 1rem; /* Um pouco de espaçamento dentro do cabeçalho */
+background-color: #007bff; /* Cor de fundo */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra do cabeçalho */
 }
 
 .inventory-page h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white; /* Cor do título */
-    margin-right: auto; /* Garante que o título fique à esquerda */
+font-size: 1.5rem;
+font-weight: bold;
+color: white; /* Cor do título */
+margin-right: auto; /* Garante que o título fique à esquerda */
 }
 
 .inventory-page .sort-dropdown {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-  }
-  
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 5px;
+}
+
 .inventory-page  .dropdown-label {
-    font-weight: bold;
-    color: #333;
-  }
-  
+font-weight: bold;
+color: #ffffff;
+}
+
 .inventory-page  #sort-options {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #fff;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-  }
-  
+padding: 5px 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+background: #fff;
+cursor: pointer;
+transition: border-color 0.2s ease;
+}
+
 .inventory-page  #sort-options:hover {
-    border-color: #aaa;
-  }
-  
-  
-                                                /* Estilos para a página de adicionar produto */
-/* Estilos gerais para a página de adicionar produto */
-.add-product-page body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
+border-color: #aaa;
 }
 
-.add-product-page .form-container {
-    width: 400px; /* Ajuste a largura do formulário conforme necessário */
-    margin: 100px auto; /* A margem automática centraliza o formulário horizontalmente e a margem de 100px garante que ele fique um pouco abaixo do topo */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+                                                        /* Estilos para a página de archive*/
+
+.archive-page .container {
+margin: 1% auto; /* Centraliza o container horizontalmente */
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+justify-content: center; /* Centraliza os produtos */
+padding: 10px; /* Adiciona espaçamento interno ao container */
+width: 100%;
+max-width: none; /* Remove limites */
 }
 
-/* Título do formulário */
-.add-product-page .form-container h1 {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 20px;
+.archive-page  .produto {
+width: 100%; /* Defina a largura do widget */
+max-width: 180px;
+height: auto; /* Deixe a altura ajustar-se automaticamente */
+border: 1px solid #ddd;
+border-radius: 8px;
+background: #fff;
+padding: 15px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+text-align: center;
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/* Estilos para os labels e inputs */
-.add-product-page label {
-    display: block;
-    font-size: 1em;
-    margin: 10px 0 5px;
-    color: #555;
-    text-align: left;
+.archive-page .produto:hover {
+transform: scale(1.05);
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.add-product-page input[type="text"],
-.add-product-page input[type="number"],
-.add-product-page input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
+.archive-page  .produto img {
+max-width: 100%;
+height: auto;
+object-fit: cover;
+border-radius: 8px;
+margin-bottom: 1px;
 }
 
-.add-product-page input[type="text"]:focus,
-.add-product-page input[type="number"]:focus,
-.add-product-page input[type="date"]:focus {
-    border-color: #4CAF50;
-    outline: none;
+.archive-page  .produto p {
+margin: 5px 0;
+font-size: 0.9em;
+color: #555;
 }
 
-/* Estilo para o botão de envio */
-.add-product-page .btn-submit {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.archive-page  .produto .preco {
+font-size: 1.1em;
+color: #27ae60;
+font-weight: bold;
 }
 
-.add-product-page .btn-submit:hover {
-    background-color: #45a049;
+.archive-page  .produto .quantidade {
+font-size: 0.9em;
+color: #ff6347;
 }
 
-/* Estilo para o link "Voltar ao Inventário" */
-.add-product-page .btn-cancel {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 1em;
-    color: #007BFF;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    border: 1px solid #007BFF;
-    transition: background-color 0.3s ease;
+.archive-page  .produto .validade {
+font-size: 0.85em;
+color: #888;
 }
 
-.add-product-page .btn-cancel:hover {
-    background-color: #007BFF;
-    color: white;
+.archive-page header {
+display: flex; /* Usando Flexbox para disposição */
+justify-content: space-between; /* Espaço entre o título e os botões */
+align-items: center; /* Alinhamento vertical dos itens */
+padding: 1rem; /* Um pouco de espaçamento dentro do cabeçalho */
+background-color: #007bff; /* Cor de fundo */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra do cabeçalho */
+}
+
+.archive-page h1 {
+font-size: 1.5rem;
+font-weight: bold;
+color: white; /* Cor do título */
+margin-right: auto; /* Garante que o título fique à esquerda */
 }

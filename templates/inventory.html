@@ -13,11 +13,9 @@
     <h1 class="text-white m-0">Lista de Produtos</h1>
     <div class="d-flex justify-content-center flex-grow-1">
       <!-- Container for buttons -->
-      <button class="btn btn-light me-2" onclick="window.location.href='home';">Voltar</button>
+      <button class="btn btn-light me-2" onclick="window.location.href='home';">Página Inicial</button>
       <!-- Trigger Add Product Modal -->
       <button class="btn btn-light me-2" data-bs-toggle="modal" data-bs-target="#addProductModal">Adicionar produto</button>
-      <!-- Trigger Archive Page -->
-      <button class="btn btn-light" onclick="window.location.href='archive';">Arquivo</button>
     </div>
     <div class="sort-dropdown">
       <label for="sort-options" class="dropdown-label">Ordenar por:</label>
@@ -40,12 +38,12 @@
             <p class="produto-quantidade">Quantidade: {{ produto['quantity'] }}</p>
             <p class="{{ expire_date_calculator(produto['expire_date'])[1] }}">
               {{ expire_date_calculator(produto['expire_date'])[0] }} dias restantes
-          </p>
+            </p>
         
             <!-- Edit and Remove actions -->
             <div class="produto-actions">
                 <button 
-                  class="btn btn-primary btn-sm" 
+                  class="btn btn-outline-custom btn-sm" 
                   data-bs-toggle="modal" 
                   data-bs-target="#editProductModal" 
                   data-product-id="{{ produto['id'] }}" 
@@ -55,9 +53,6 @@
                   data-expire-date="{{ produto['expire_date'] }}">
                   Editar
                 </button>
-                <form action="/remove_product/{{ produto['id'] }}" method="POST" style="display: inline;">
-                    <button type="submit" class="btn btn-danger btn-sm">Remover</button>
-                </form>
             </div>
         </div>
       {% endfor %}
@@ -126,8 +121,12 @@
               <label for="edit_expire_date" class="form-label">Data de Validade</label>
               <input type="date" class="form-control" id="edit_expire_date" name="expire_date" required>
             </div>
+            <form id="removeProductForm" action="" method="POST" onsubmit="return confirm('Tem certeza que deseja remover este produto?');">
             <button type="submit" class="btn btn-primary">Salvar Alterações</button>
           </form>
+            <form id="removeProductForm" action="" method="POST" onsubmit="return confirm('Tem certeza que deseja remover este produto?');">
+              <button type="submit" class="btn btn-danger mt-3">Remover Produto</button>
+            </form>
         </div>
       </div>
     </div>
@@ -147,7 +146,7 @@
         const quantity = button.getAttribute('data-quantity');
         const expireDate = button.getAttribute('data-expire-date');
         
-        // Populate modal with product data
+        // Edit form
         const modalForm = document.getElementById('editProductForm');
         modalForm.action = `/edit_product/${productId}`;
         document.getElementById('product_id').value = productId;
@@ -155,7 +154,27 @@
         document.getElementById('edit_price').value = price;
         document.getElementById('edit_quantity').value = quantity;
         document.getElementById('edit_expire_date').value = expireDate;
+
+        // Remove form
+        const removeForm = document.getElementById('removeProductForm');
+        removeForm.action = `/remove_product/${productId}`; 
     });
-  </script>
+    
+  //   // Add click event to containers
+  //   const produtos = document.querySelectorAll('.produto');
+  
+  //   // Adds product to basket when clicked
+  //   function handleClick(produtoId) {                                      # IN DEVELOPMENT
+  //     console.log("Produto clicado! ID: " + produtoId);
+  //   }
+  //   produtos.forEach(produto => {
+  //     produto.addEventListener('click', function() {
+  //       const produtoId = produto.getAttribute('data-product-id');
+  //       handleClick(produtoId);
+  //     });
+  // });
+
+</script>
+
 </body>
 </html>

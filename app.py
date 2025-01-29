@@ -34,9 +34,9 @@ def get_products(sort_by='expire_date'):
     return rows
     
 def expire_date_calculator(expire_date):
-    expire_date = datetime.strptime(expire_date, "%Y-%m-%d") # Converte a data de validade para o formato datetime
-    today = datetime.today() # Pega a data de hoje
-    days_until_expire = (expire_date - today).days # Calcula a diferença entre a data de validade e a data de hoje
+    expire_date = datetime.strptime(expire_date, "%Y-%m-%d") # Converts the string to a datetime object
+    today = datetime.today() # Grab today's date
+    days_until_expire = (expire_date - today).days # Calculates the difference in days
     if days_until_expire <= 0:
         color_class = "text-danger"
         days_until_expire = 0
@@ -95,7 +95,7 @@ def edit_product(product_id):
 
     return render_template('edit_product.html', product=product)
 
-@app.route('/remove_product/<int:product_id>', methods=['POST'])
+@app.route('/remove_product/<int:product_id>', methods=['GET', 'POST'])
 def remove_product(product_id):
     conn = sqlite3.connect('products_database.db')  # For accessing products
     conn.row_factory = sqlite3.Row  # Ensures rows are accessed as dictionaries
@@ -134,7 +134,7 @@ def remove_product(product_id):
     conn.commit()
     conn.close()
 
-    return redirect(url_for('inventory'))
+    return redirect('/inventory')
 
 @app.route('/archive')
 def archive():

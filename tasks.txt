@@ -1,11 +1,23 @@
-- Adicionar feature editar
-- Adicionar feature remover
-- Adicionar cores data validade
-- Adicionar feature importar
-- Adicionar feature exportar
-- Adicionar feature register/login
-- Corrigir user inputs
 - Adicionar apresentação inicial
-- Limpeza código
-- Induzir erros e Corrigir
+- Limpar o código
+- Induzir erros e corrigir
+- Corrigir user inputs
+- Melhorar css / bootstrap
 
+- Adicionar feature importar
+    - adicionar fornecedores produtos
+    - implementar feature para ler os recibos de compras
+    - implementar auto-import
+    
+    
+- Adicionar feature exportar
+    - adicionar feature carrinho
+    - adicionar fornecedores produtos
+    - implementar auto-order
+    
+    
+- Adicionar feature register/login
+    - Associar product-DB com user
+    - Bloquear acessos para requests não válidos
+    - Aumentar segurança da informação do user
+    - Aumentar segurança da informação das DB
