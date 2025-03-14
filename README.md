@@ -26,9 +26,18 @@ The project is still in development. Once ready, we will provide detailed instal
 ## 🏆 Team  
 
 The project is being developed by **a two-person team**, aiming to enhance **teamwork skills** while building a useful solution for kitchen management.  
-Daviddvale
+Daviddvale /
 marcekbck
 ---  
 
 💡 **Status:** _In development_  
 📢 **Future updates:** UI improvements, integration with more suppliers, and personalized reports.  
+
+## 📬 Contato
+
+Caso tenhas sugestões ou queiras contribuir, entra em contato!
+
+Email: mferreira.professional@gmail.com
+
+Discord: kubick#3223
+---
